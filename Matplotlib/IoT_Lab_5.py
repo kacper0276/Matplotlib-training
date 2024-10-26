@@ -1,6 +1,4 @@
 import matplotlib.pyplot as plt
-
-import matplotlib.pyplot as plt
 import numpy as np
 
 kody = [
@@ -15,21 +13,20 @@ wartosci_zmierzone = [7.964, 3.973, 1.982, 0.994, 0.797, 0.393, 0.193, 0.097, 0.
 x = np.arange(len(kody))
 width = 0.4
 
-plt.figure(figsize=(10, 6))
-plt.bar(x - width / 2, wartosci_oczekiwane, width, label='Wartość Oczekiwana [V]', color='blue')
-plt.bar(x + width / 2, wartosci_zmierzone, width, label='Wartość Zmierzona [V]', color='orange')
+plt.figure(figsize=(10, 8))
+plt.barh(x - width / 2, wartosci_oczekiwane, height=width, label='Wartość Oczekiwana [V]', color='blue')
+plt.barh(x + width / 2, wartosci_zmierzone, height=width, label='Wartość Zmierzona [V]', color='orange')
 
 for i, v in enumerate(wartosci_oczekiwane):
-    plt.text(x[i] - width / 2, v + 0.02, f"{v:.2f}", ha='center')
-
+    plt.text(v + 0.02, x[i] - width / 2, f"{v:.2f}", va='center')
 for i, v in enumerate(wartosci_zmierzone):
-    plt.text(x[i] + width / 2, v + 0.02, f"{v:.2f}", ha='center')
+    plt.text(v + 0.02, x[i] + width / 2, f"{v:.2f}", va='center')
 
-plt.xlabel('Wybrany Kod', fontsize=12)
-plt.ylabel('Wartość [V]', fontsize=12)
+plt.ylabel('Wybrany Kod', fontsize=12)
+plt.xlabel('Wartość [V]', fontsize=12)
 plt.title('Porównanie Wartości Oczekiwanych i Zmierzonych', fontsize=14)
-plt.xticks(x, kody, rotation=45, fontsize=10)
-plt.yticks(fontsize=10)
+plt.yticks(x, kody, rotation=0, fontsize=10)
+plt.xticks(fontsize=10)
 plt.legend(fontsize=10)
 plt.grid(True)
 plt.tight_layout()
@@ -49,21 +46,20 @@ wartosci_zmierzone_now = [9.971, 8.983, 1.214, 1.014, 0.917, 0.138, 0.117, 0.105
 
 x_now = np.arange(len(kody_now))
 
-plt.figure(figsize=(10, 6))
-plt.bar(x_now - width / 2, wartosci_oczekiwane_now, width, label='Wartość Oczekiwana [V]', color='blue')
-plt.bar(x_now + width / 2, wartosci_zmierzone_now, width, label='Wartość Zmierzona [V]', color='orange')
+plt.figure(figsize=(10, 8))
+plt.barh(x_now - width / 2, wartosci_oczekiwane_now, height=width, label='Wartość Oczekiwana [V]', color='blue')
+plt.barh(x_now + width / 2, wartosci_zmierzone_now, height=width, label='Wartość Zmierzona [V]', color='orange')
 
-for i, v in enumerate(wartosci_oczekiwane):
-    plt.text(x[i] - width / 2, v + 0.02, f"{v:.2f}", ha='center')
+for i, v in enumerate(wartosci_oczekiwane_now):
+    plt.text(v + 0.02, x_now[i] - width / 2, f"{v:.2f}", va='center')
+for i, v in enumerate(wartosci_zmierzone_now):
+    plt.text(v + 0.02, x_now[i] + width / 2, f"{v:.2f}", va='center')
 
-for i, v in enumerate(wartosci_zmierzone):
-    plt.text(x[i] + width / 2, v + 0.02, f"{v:.2f}", ha='center')
-
-plt.xlabel('Wybrany Kod', fontsize=12)
-plt.ylabel('Wartość [V]', fontsize=12)
+plt.ylabel('Wybrany Kod', fontsize=12)
+plt.xlabel('Wartość [V]', fontsize=12)
 plt.title('Porównanie Wartości Oczekiwanych i Zmierzonych (Nowy Zestaw Danych)', fontsize=14)
-plt.xticks(x_now, kody_now, rotation=45, fontsize=10)
-plt.yticks(fontsize=10)
+plt.yticks(x_now, kody_now, rotation=0, fontsize=10)
+plt.xticks(fontsize=10)
 plt.legend(fontsize=10)
 plt.grid(True)
 plt.tight_layout()
@@ -79,20 +75,24 @@ zmierzone_wyjsciowe_bin = ['00000000', '00001111', '00011111', '00101111', '0011
 obliczone_wyjsciowe = [int(x, 2) for x in obliczone_wyjsciowe_bin]
 zmierzone_wyjsciowe = [int(x, 2) for x in zmierzone_wyjsciowe_bin]
 
-plt.figure(figsize=(10, 6))
-plt.plot(napiecia, obliczone_wyjsciowe, label='Wartość Obliczona', marker='o')
-plt.plot(napiecia, zmierzone_wyjsciowe, label='Wartość Zmierzona', marker='x')
+plt.figure(figsize=(10, 8))
+plt.barh(napiecia, obliczone_wyjsciowe, height=0.2, label='Wartość Obliczona', color='green')
+plt.barh(np.array(napiecia) + 0.2, zmierzone_wyjsciowe, height=0.2, label='Wartość Zmierzona', color='purple')
 
-plt.xlabel('Wartość Napięcia Wejściowego [V]', fontsize=12)
-plt.ylabel('Wyjście Cyfrowe (dziesiętnie)', fontsize=12)
+for i, v in enumerate(obliczone_wyjsciowe):
+    plt.text(v + 3, napiecia[i], str(v), ha='center', va='center')
+for i, v in enumerate(zmierzone_wyjsciowe):
+    plt.text(v + 3, napiecia[i] + 0.2, str(v), ha='center', va='center')
+
+plt.xlabel('Wyjście Cyfrowe (dziesiętnie)', fontsize=12)
+plt.ylabel('Wartość Napięcia Wejściowego [V]', fontsize=12)
 plt.title('Porównanie Wyjść Cyfrowych (Obliczonych i Zmierzonych)', fontsize=14)
-plt.xticks(napiecia, fontsize=10)
-plt.yticks(fontsize=10)
+plt.yticks(napiecia, fontsize=10)
+plt.xticks(fontsize=10)
 plt.legend(fontsize=10)
 plt.grid(True)
 plt.tight_layout()
 
 tabela3_plot_path = "tabela2_wykres.png"
 plt.savefig(tabela3_plot_path)
-
 plt.clf()
