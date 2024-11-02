@@ -18,9 +18,9 @@ plt.barh(x - width / 2, wartosci_oczekiwane, height=width, label='Wartość Ocze
 plt.barh(x + width / 2, wartosci_zmierzone, height=width, label='Wartość Zmierzona [V]', color='orange')
 
 for i, v in enumerate(wartosci_oczekiwane):
-    plt.text(v + 0.02, x[i] - width / 2, f"{v:.2f}", va='center')
+    plt.text(v + 0.02, x[i] - width / 2, f"{v:.3f}", va='center')
 for i, v in enumerate(wartosci_zmierzone):
-    plt.text(v + 0.02, x[i] + width / 2, f"{v:.2f}", va='center')
+    plt.text(v + 0.02, x[i] + width / 2, f"{v:.3f}", va='center')
 
 plt.ylabel('Wybrany Kod', fontsize=12)
 plt.xlabel('Wartość [V]', fontsize=12)
@@ -51,9 +51,9 @@ plt.barh(x_now - width / 2, wartosci_oczekiwane_now, height=width, label='Warto�
 plt.barh(x_now + width / 2, wartosci_zmierzone_now, height=width, label='Wartość Zmierzona [V]', color='orange')
 
 for i, v in enumerate(wartosci_oczekiwane_now):
-    plt.text(v + 0.02, x_now[i] - width / 2, f"{v:.2f}", va='center')
+    plt.text(v + 0.02, x_now[i] - width / 2, f"{v:.3f}", va='center')
 for i, v in enumerate(wartosci_zmierzone_now):
-    plt.text(v + 0.02, x_now[i] + width / 2, f"{v:.2f}", va='center')
+    plt.text(v + 0.02, x_now[i] + width / 2, f"{v:.3f}", va='center')
 
 plt.ylabel('Wybrany Kod', fontsize=12)
 plt.xlabel('Wartość [V]', fontsize=12)
