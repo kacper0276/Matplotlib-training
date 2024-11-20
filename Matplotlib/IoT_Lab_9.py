@@ -15,7 +15,7 @@ plt.xlabel('Odległość [cm]')
 plt.ylabel('Temperatura [°C]')
 plt.grid(True)
 plt.legend()
-plt.show()
+plt.savefig('zad1.png')
 
 masses = [2, 3, 4, 5, 6, 7, 8, 9, 10]  # w kg
 resistances = [0.5534 / 1000, 124.81, 51.23, 39.925, 25.56, 22.52, 20.43, 15.69, 14.576]  # w kΩ
@@ -27,4 +27,4 @@ plt.xlabel('Masa [kg]')
 plt.ylabel('Opór [kΩ]')
 plt.grid(True)
 plt.legend()
-plt.show()
+plt.savefig('zad2.png')
