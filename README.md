@@ -41,7 +41,3 @@ To set up the project locally and run the visualization scripts:
     ```bash
     pip install matplotlib pandas
     ```
-
-## License
-
-This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
